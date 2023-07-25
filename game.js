@@ -57,3 +57,54 @@ setInterval(function() {
         guy.style.left = parseInt(guy.style.left) - villianSpeed + '%';
     }
 }, 100);
+
+// Get the game board element
+let gameBoard = document.getElementById('game-board');
+
+// Listen for touch events on the game board
+gameBoard.addEventListener('touchstart', handleTouchStart, false);
+gameBoard.addEventListener('touchmove', handleTouchMove, false);
+
+let xDown = null;
+let yDown = null;
+
+// Save the position when the touch starts
+function handleTouchStart(evt) {
+    const firstTouch = evt.touches[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+}
+
+// Determine the direction of the swipe and move Donut
+function handleTouchMove(evt) {
+    if (!xDown || !yDown) {
+        return;
+    }
+
+    let xUp = evt.touches[0].clientX;
+    let yUp = evt.touches[0].clientY;
+
+    let xDiff = xDown - xUp;
+    let yDiff = yDown - yUp;
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) { // Most significant.
+        if (xDiff > 0) {
+            /* left swipe */
+            donut.style.left = parseInt(donut.style.left) - donutSpeed + '%';
+        } else {
+            /* right swipe */
+            donut.style.left = parseInt(donut.style.left) + donutSpeed + '%';
+        }
+    } else {
+        if (yDiff > 0) {
+            /* up swipe */
+            donut.style.top = parseInt(donut.style.top) - donutSpeed + '%';
+        } else {
+            /* down swipe */
+            donut.style.top = parseInt(donut.style.top) + donutSpeed + '%';
+        }
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;
+}
