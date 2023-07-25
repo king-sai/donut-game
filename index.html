@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donut's Adventure</title>
+    <style>
+        #game-board {
+            position: relative;
+            height: 600px;
+            width: 800px;
+            border: 1px solid black;
+            background-image: url('grass.jpeg');
+        }
+        .character {
+            position: absolute;
+            height: 50px;
+            width: 50px;
+        }
+        #donut {
+             background-image: url('dump-dog.gif ');
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        #grandpa {
+           
+            background-image: url('old-man.webp');
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        #guy {
+        background-image: url('fat-guy.webp');
+        background-size: contain;
+            background-repeat: no-repeat;
+            width: 200px;
+            height: 200px;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div id="game-board">
+        <div id="donut" class="character"></div>
+        <div id="grandpa" class="character"></div>
+        <div id="guy" class="character"></div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
